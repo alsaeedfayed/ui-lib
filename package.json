@@ -24,6 +24,7 @@
     "build:css": "npx tailwindcss -i ./styles/index.css -o ./dist/styles.css --minify",
     "dev": "tsup --watch",
     "lint": "tsc --noEmit",
+    "prepare": "npm run build",
     "prepublishOnly": "npm run build"
   },
   "repository": {
