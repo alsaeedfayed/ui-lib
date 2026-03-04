@@ -11,17 +11,21 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": {
+      "types": "./dist/styles.css.d.ts",
+      "default": "./dist/styles.css"
+    }
   },
   "files": [
-    "dist"
+    "dist",
+    "styles.css.d.ts"
   ],
   "sideEffects": [
     "**/*.css"
   ],
   "scripts": {
     "build": "tsup && npm run build:css",
-    "build:css": "npx tailwindcss -i ./styles/index.css -o ./dist/styles.css --minify",
+    "build:css": "npx tailwindcss -i ./styles/index.css -o ./dist/styles.css --minify && cp styles.css.d.ts dist/styles.css.d.ts",
     "dev": "tsup --watch",
     "lint": "tsc --noEmit",
     "prepare": "npm run build",
